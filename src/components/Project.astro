@@ -1,0 +1,10 @@
+---
+const { name, description, link } = Astro.props as Project;
+---
+
+<a class="flex flex-col gap-2" href={link} target="_blank">
+  <h2 class="underline underline-offset-4 decoration-neutral-500 font-bold">
+    {name}
+  </h2>
+  <p>{description}</p>
+</a>
