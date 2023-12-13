@@ -1,5 +1,6 @@
 ---
-import "@fontsource-variable/public-sans";
+import '../styles/globals.css';
+import '@fontsource-variable/public-sans';
 
 interface Props {
   title?: string;
@@ -18,14 +19,16 @@ const { title = 'Senbo' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen max-w-prose mx-auto py-2 bg-neutral-950 text-neutral-200">
+  <body
+    class="min-h-screen max-w-prose mx-auto py-2 bg-neutral-950 text-neutral-200"
+  >
     <slot />
   </body>
 </html>
 <style is:global>
   body {
-		font-family: 'Public Sans', sans-serif;
-	}
+    font-family: 'Public Sans', sans-serif;
+  }
 
   ::selection {
     background-color: #525252;

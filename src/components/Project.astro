@@ -1,12 +1,18 @@
 ---
 import type { Project } from '../data/projects';
+import { Icon } from 'astro-icon';
 
 const { name, description, link } = Astro.props as Project;
 ---
 
-<a class="flex flex-col gap-2" href={link} target="_blank">
-  <h2 class="underline underline-offset-4 decoration-neutral-500 font-bold">
-    {name}
-  </h2>
+<div class="flex flex-col gap-2">
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <h2
+      class="font-bold flex items-center gap-1 hover-transition underline underline-offset-4 decoration-neutral-500"
+    >
+      <Icon name="octicon:repo-16" class="h-4" />
+      {name}
+    </h2>
+  </a>
   <p>{description}</p>
-</a>
+</div>

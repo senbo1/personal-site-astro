@@ -7,7 +7,7 @@ export interface Project {
 export const Projects: Project[] = [
   {
     name: "twitter-clone",
-    description: "Twitter Clone Made with Nextjs (IN PROGRESS)",
+    description: "Twitter clone made with Nextjs",
     link: "https://github.com/senbo1/twitter-clone"
   },
   {
