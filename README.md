@@ -1,40 +1,24 @@
-# Astro Starter Kit: Basics
+# Personal Site
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Why Astro ?
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Because its a mostly static site except one thing which is the UI for the currently playing track from spotify.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Is this fetching data client side with ACCESS TOKEN??!!
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+No, the data is fetched from Astro Endpoint('/spotifydata.json') which calls the spotify API on the server using access token if it is not expired otherwise will generate a new access token using the permanent token from environment.
 
-## 🚀 Project Structure
+On client side, No sensitive information is passed. The server sends only the data that is needed to render the UI for Spotify Component.
 
-Inside of your Astro project, you'll see the following folders and files:
+![Alt text](/public/data-fetching.png "Data Fetching")
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Tech Stack
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+- Astro
+- React
+- Typescript
+- TailwindCSS
+- Bun
 
 ## 🧞 Commands
 
@@ -42,13 +26,10 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `bun install`             | Installs dependencies                            |
+| `bun run dev`             | Starts local dev server at `localhost:4321`      |
+| `bun run build`           | Build your production site to `./dist/`          |
+| `bun run preview`         | Preview your build locally, before deploying     |
+| `bun run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
