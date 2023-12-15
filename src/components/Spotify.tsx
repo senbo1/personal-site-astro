@@ -15,7 +15,9 @@ const Spotify: FC = () => {
         setSong(data);
 
         if (progress.current) {
-          progress.current.style.width = `${Math.floor(data?.currentProgress * 100)}%`;
+          progress.current.style.width = `${Math.floor(
+            data?.currentProgress * 100
+          )}%`;
         }
       } else if (res.status === 204) {
         setSong(undefined);
@@ -54,7 +56,13 @@ const Spotify: FC = () => {
         Currently {song.isCurrentlyPlaying ? 'Playing' : 'Paused'}
       </h2>
       <div className="flex">
-        <img src={song.album.image} alt="Album cover" width={60} height={60} className='rounded-md'/>
+        <img
+          src={song.album.image}
+          alt="Album cover"
+          width={60}
+          height={60}
+          className="rounded-md"
+        />
         <div className="flex flex-col justify-between w-full">
           <div className="flex">
             <a
@@ -64,11 +72,16 @@ const Spotify: FC = () => {
             >
               {song.title} - {song.artist.name}
             </a>
-            <p className='font-mono'>{formatTime(Math.floor(song.progress_ms / 1000))}</p>
+            <p className="font-mono">
+              {formatTime(Math.floor(song.progress_ms / 1000))}
+            </p>
           </div>
           <div className="flex justify-center">
-            <div className='w-3/4 h-1 bg-neutral-600 rounded-full'>
-              <div className='h-full bg-neutral-50 rounded-full' ref={progress}></div>
+            <div className="w-3/4 h-1 bg-neutral-600 rounded-full">
+              <div
+                className="h-full bg-neutral-50 rounded-full"
+                ref={progress}
+              ></div>
             </div>
           </div>
         </div>
