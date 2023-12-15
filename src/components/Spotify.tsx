@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef, type FC } from 'react';
-import { FaSpotify } from 'react-icons/fa';
 import type { Song } from '../lib/types';
+import SpotifyIcon from './SpotifyIcon';
 
 const Spotify: FC = () => {
   const [song, setSong] = useState<Song>();
@@ -39,7 +39,7 @@ const Spotify: FC = () => {
     return (
       <section className="flex flex-col gap-1 my-2">
         <h2 className="font-bold flex items-center gap-2 underline underline-offset-4 decoration-neutral-500 hover-transition">
-          <FaSpotify className="h-6" />
+          <SpotifyIcon className='h-6'/>
           Nothing Playing Right now!
         </h2>
         <div className="flex justify-center w-full">
@@ -52,7 +52,7 @@ const Spotify: FC = () => {
   return (
     <section className="flex flex-col gap-2 my-3">
       <h2 className="font-bold flex items-center gap-2 underline underline-offset-4 decoration-neutral-500 hover-transition">
-        <FaSpotify className="h-6" />
+        <SpotifyIcon className='h-6'/>
         Currently {song.isCurrentlyPlaying ? 'Playing' : 'Paused'}
       </h2>
       <div className="flex">

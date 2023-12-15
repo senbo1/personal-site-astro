@@ -1,8 +1,10 @@
-export async function getAccessToken(): Promise<{ access_token: string }> {
+import "dotenv/config";
+
+async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN as string;
   const clientId = process.env.SPOTIFY_CLIENT_ID as string;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET as string;
-
+  
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
