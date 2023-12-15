@@ -8,7 +8,7 @@ let isRealNameOnDisplay = false;
 
 let interval: NodeJS.Timeout | undefined = undefined;
 
-heading.addEventListener('mouseenter', (event) => {
+heading.addEventListener('mouseenter', () => {
   let iteration = 0;
 
   clearInterval(interval);
@@ -23,7 +23,7 @@ heading.addEventListener('mouseenter', (event) => {
   interval = setInterval(() => {
     heading.innerText = heading.innerText
       .split('')
-      .map((letter, index) => {
+      .map((_, index) => {
         if (index < iteration) {
           return name[index];
         } else if (index === 0) {
