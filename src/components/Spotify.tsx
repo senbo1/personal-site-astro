@@ -30,7 +30,9 @@ const Spotify: FC = () => {
 
   const downloadAndPlayPause = useCallback(() => {
     if (song && (!audio || (audio && song.title !== audio.title))) {
+      let wasPlaying: boolean = false;
       if (audio) {
+        wasPlaying = !audio.paused;
         audio.pause();
         URL.revokeObjectURL(audio.src);
       }
@@ -43,7 +45,9 @@ const Spotify: FC = () => {
           newAudio.title = song.title;
           newAudio.volume = 0.4;
           setAudio(newAudio);
-          newAudio.play();
+          if (!wasPlaying) {
+            newAudio.play();
+          }
         });
     } else if (audio && !audio.paused) {
       audio.pause();
@@ -100,9 +104,9 @@ const Spotify: FC = () => {
               </a>
               <button className="mx-auto " onClick={downloadAndPlayPause}>
                 {!audio || audio.paused ? (
-                  <Icons.Play className="h-6" />
+                  <Icons.Play className="h-6" aria-label="Play" />
                 ) : (
-                  <Icons.Pause className="h-6" />
+                  <Icons.Pause className="h-6" aria-label="Pause" />
                 )}
               </button>
             </div>
@@ -127,3 +131,6 @@ const Spotify: FC = () => {
 export default Spotify;
 
 // RIP SEO
+
+// on song change 
+
