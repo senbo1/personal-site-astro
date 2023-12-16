@@ -4,7 +4,7 @@ import { Icons } from './Icons/ReactIcons';
 
 const Spotify: FC = () => {
   const [song, setSong] = useState<Song>();
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null); 
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const progress = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,19 +29,26 @@ const Spotify: FC = () => {
   }, []);
 
   const downloadAndPlayPause = useCallback(() => {
-    if (audio && !audio.paused) {
-      audio.pause();
-    } else if (audio && audio.paused) {
-      audio.play();
-    } else if (!audio && song) {
+    if (song && (!audio || (audio && song.title !== audio.title))) {
+      if (audio) {
+        audio.pause();
+        URL.revokeObjectURL(audio.src);
+      }
+
       fetch(song.previewUrl)
         .then((res) => res.blob())
         .then((blob) => {
           const objectURL = URL.createObjectURL(blob);
           const newAudio = new Audio(objectURL);
-          setAudio(newAudio)
+          newAudio.title = song.title;
+          newAudio.volume = 0.4;
+          setAudio(newAudio);
           newAudio.play();
         });
+    } else if (audio && !audio.paused) {
+      audio.pause();
+    } else if (audio && audio.paused) {
+      audio.play();
     }
   }, [song?.previewUrl, audio]);
 
@@ -91,11 +98,12 @@ const Spotify: FC = () => {
               >
                 {song.title} - {song.artist.name}
               </a>
-              <button
-                className="mx-auto hover-transition"
-                onClick={downloadAndPlayPause}
-              >
-                Play/Pause
+              <button className="mx-auto " onClick={downloadAndPlayPause}>
+                {!audio || audio.paused ? (
+                  <Icons.Play className="h-6" />
+                ) : (
+                  <Icons.Pause className="h-6" />
+                )}
               </button>
             </div>
             <p className="font-mono">
