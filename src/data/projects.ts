@@ -13,7 +13,7 @@ export const Projects: Project[] = [
   {
     name: 'personal-site',
     description: 'Personal site made with Astro, React & TypeScript',
-    link: 'https://github.com/senbo1/shin',
+    link: 'https://github.com/senbo1/personal-site',
   },
   {
     name: 'RESTful-API',

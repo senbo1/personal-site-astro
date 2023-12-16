@@ -22,7 +22,7 @@ const Spotify: FC = () => {
       } else if (res.status === 204) {
         setSong(undefined);
       }
-    }, 500);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -42,8 +42,8 @@ const Spotify: FC = () => {
           <SpotifyIcon className='h-6 ml-1'/>
           Nothing Playing Right now!
         </h2>
-        <div className="flex justify-center w-full">
-          <img src="/wall.jpg" alt="Chill Clouds Image" />
+        <div className="flex justify-center">
+          <img src="/wall.jpg" alt="Chill Clouds Image" className='w-full'/>
         </div>
       </section>
     );
@@ -52,7 +52,7 @@ const Spotify: FC = () => {
   return (
     <section className="flex flex-col gap-2 my-3">
       <h2 className="font-bold flex items-center gap-2 underline underline-offset-4 decoration-neutral-500 hover-transition">
-        <SpotifyIcon className='h-6'/>
+        <SpotifyIcon className='h-6 ml-1'/>
         Currently {song.isCurrentlyPlaying ? 'Playing' : 'Paused'}
       </h2>
       <div className="flex">
