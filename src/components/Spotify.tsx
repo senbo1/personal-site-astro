@@ -80,8 +80,8 @@ const Spotify: FC = () => {
 
   return (
     <section className="flex flex-col gap-2 my-3">
-      <h2 className="font-bold flex items-center gap-2 underline underline-offset-4 decoration-neutral-500 hover-transition">
-        <Icons.SpotifyIcon className="h-6 ml-1" />
+      <h2 className="font-bold flex items-center gap-2 underline underline-offset-4 decoration-neutral-500 hover-transition group">
+        <Icons.SpotifyIcon className="h-6 ml-1 fill-green-600 group-hover:fill-neutral-900 duration-200" />
         Currently {song.isCurrentlyPlaying ? 'Playing' : 'Paused'}
       </h2>
       <div className="flex">
@@ -93,31 +93,31 @@ const Spotify: FC = () => {
           className="rounded-md"
         />
         <div className="flex flex-col justify-between w-full">
-          <div className="flex">
-            <div className="mx-auto flex flex-col">
-              <a
-                className="font-bold hover-transition mx-auto truncate"
-                href={song.externalUrl}
-                target="_blank"
-              >
-                {song.title} - {song.artist.name}
-              </a>
-              <button className="mx-auto " onClick={downloadAndPlayPause}>
-                {!audio || audio.paused ? (
-                  <Icons.Play className="h-6" aria-label="Play" />
-                ) : (
-                  <Icons.Pause className="h-6" aria-label="Pause" />
-                )}
-              </button>
-            </div>
-            <p className="font-mono">
-              {formatTime(Math.floor(song.progress_ms / 1000))}
+          <div className="flex justify-between px-2">
+            <a
+              className="truncate font-mono tracking-tight flex flex-col ml-2"
+              href={song.externalUrl}
+              target="_blank"
+            >
+              <span className='hover-transition'>{song.title}</span>
+              <span className='text-sm text-neutral-400'>{song.artist.name}</span>
+            </a>
+            <button onClick={downloadAndPlayPause}>
+              {!audio || audio.paused ? (
+                <Icons.Play className="h-6" aria-label="Play" />
+              ) : (
+                <Icons.Pause className="h-6" aria-label="Pause" />
+              )}
+            </button>
+            <p className={"font-mono text-green-400 h-fit"}>
+              {formatTime(Math.floor(song.progress_ms / 1000))} /{' '}
+              {formatTime(Math.floor(song.duration_ms / 1000))}
             </p>
           </div>
-          <div className="flex justify-center mx-auto w-3/4">
+          <div className="flex justify-center w-full px-5">
             <div className="w-full h-1 bg-neutral-600 rounded-full">
               <div
-                className="h-full bg-neutral-50 rounded-full"
+                className="h-full rounded-full bg-green-500"
                 ref={progress}
               ></div>
             </div>
@@ -132,5 +132,4 @@ export default Spotify;
 
 // RIP SEO
 
-// on song change 
-
+// on song change
